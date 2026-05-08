@@ -2,10 +2,12 @@ package br.com.infnet.entity;
 
 public class User {
     private String name;
-    private String id;
 
-    public User(String name, String id) {
+    public User(String name) {
         this.name = name;
-        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

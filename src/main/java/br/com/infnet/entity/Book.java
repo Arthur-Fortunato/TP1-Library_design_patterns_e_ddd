@@ -1,16 +1,15 @@
 package br.com.infnet.entity;
 
-public class Book {
-    private String title;
-    private String author;
-    private String isbn;
+import br.com.infnet.interfaces.Item;
 
-    public Book(String title, String author, String isbn) {
+public class Book implements Item {
+    private String title;
+
+    public Book(String title) {
         this.title = title;
-        this.author = author;
-        this.isbn = isbn;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }

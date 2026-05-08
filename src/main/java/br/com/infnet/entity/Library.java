@@ -1,45 +1,23 @@
 package br.com.infnet.entity;
 
+import br.com.infnet.interfaces.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
+    private static Library library;
 
-    private List<Book> books = new ArrayList<>();
-    private List<User> users = new ArrayList<>();
-    private List<Loan> loans = new ArrayList<>();
+    public List<Item> items = new ArrayList<>();
+    public List<User> users = new ArrayList<>();
+    public List<Loan> loans = new ArrayList<>();
 
-    public void addBook(Book book) {
-        books.add(book);
-    }
+    private Library() {}
 
-    public void removeBook(Book book) {
-        books.remove(book);
-    }
-
-    public Book findBook(String title) {
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                return book;
-            }
+    public static Library getLibrary() {
+        if (library == null) {
+            library = new Library();
         }
-        return null;
-    }
-
-    public void addUser(User user) {
-        users.add(user);
-    }
-
-    public void removeUser(User user) {
-        users.remove(user);
-    }
-
-    public void loanBook(Book book, User user) {
-        Loan loan = new Loan(book, user);
-        loans.add(loan);
-    }
-
-    public void returnBook(Book book, User user) {
-        loans.removeIf(loan -> loan.getBook().equals(book) && loan.getUser().equals(user));
+        return library;
     }
 }
